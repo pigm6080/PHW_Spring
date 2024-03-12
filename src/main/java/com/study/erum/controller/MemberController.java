@@ -112,17 +112,10 @@ public class MemberController {
 	   public String update(@ModelAttribute MemberDTO memberDTO){
 	     boolean result = memberService.update(memberDTO);
 	     if(result){
-	       return "redirect:/member?id=" + memberDTO.getBno();
+	       return "redirect:/member/home";
 	     }else{
 	       return "index";
 	     }
 	   }
 	   
-	   @PostMapping("/email-check")
-	   public @ResponseBody String emailCheck(@RequestParam("memberEmail")String memberEamil) {
-		   System.out.println("memberEmail = " + memberEamil);
-		   String checkResultString = memberService.emailCheck(memberEamil);
-		   return checkResultString;
-	   }
-	
 }

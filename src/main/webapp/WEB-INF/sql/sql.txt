@@ -1,0 +1,12 @@
+CREATE TABLE student (
+    bno INT(255) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    kor INT(255) NOT NULL,
+    eng INT(255) NOT NULL,
+    mat INT(255) NOT NULL
+)default character set utf8;
+
+SELECT * from student;
+
+insert into student(bno, name, kor, eng, mat)
+values(1, 'sd', 90,90,80);
