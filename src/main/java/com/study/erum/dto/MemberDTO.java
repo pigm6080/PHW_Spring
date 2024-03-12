@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
 	
-	private Long id;
-	private String memberEmail;
-	private String memberPassword;
-	private String memberName;
-	private int memberAge;
-	private String memberMobile;
+	private int bno;
+	private String name;
+	private int kor;
+	private int eng;
+	private int mat;
+	
 }

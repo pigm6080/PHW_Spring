@@ -9,10 +9,10 @@
 <body>
 	
 	<form action="/member/login" method="post">
-		<p>아 이 디 : <input type="text" name ="memberEmail" placeholder="이메일" /></p>
-		<p>비밀번호 : <input type="text" name ="memberPassword" placeholder="비밀번호" /></p>
+		<p>학점 : <input type="text" name ="bno" placeholder="학번" /></p>
+		<p>이름 : <input type="text" name ="name" placeholder="비밀번호" /></p>
 		<input type="submit" value="로그인" />
 	</form>
-	
+	<a href="/member/home">홈으로가기</a>
 </body>
 </html>

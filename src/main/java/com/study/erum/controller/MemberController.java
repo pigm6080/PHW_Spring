@@ -2,6 +2,7 @@ package com.study.erum.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -30,12 +31,20 @@ public class MemberController {
 	
 	@GetMapping("/save")
 	public String saveForm() {
-		System.out.println("save 컨드롤러 실행");
+		System.out.println("학생등록 컨트롤러 실행");
 		return "save";
+	}
+	@GetMapping("/home")
+	public String home(Model model) {
+		List<MemberDTO> memberDTOList = memberService.findAll();
+		model.addAttribute("memberList",memberDTOList);
+		System.out.println("home 컨트롤러 실행");
+		return "home";
 	}
 	
 	@PostMapping("/save")
 	public String save(@ModelAttribute MemberDTO memberDTO) {
+		
 		//@ManagedAttribute 데이터 베이스 안에 있는값을 여기로 넘겨줘라..
 		int saveResult = memberService.save(memberDTO);
 		if(saveResult>0) {
@@ -45,6 +54,10 @@ public class MemberController {
 			return "save";
 		}
 	}
+	
+	
+	
+	
 	@GetMapping("/login")
 	public String loginForm() {
 		System.out.println("login 컨드롤러 실행");
@@ -57,7 +70,7 @@ public class MemberController {
 		boolean loginResult = memberService.login(memberDTO);
 		System.out.println(loginResult);
 		if(loginResult) {
-			session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+			session.setAttribute("loginBno", memberDTO.getName());
 			//성공하면열로가라
 			return "main";
 		}else {
@@ -75,21 +88,23 @@ public class MemberController {
 	
 	  //member?id=1
 	   @GetMapping
-	   public String findById(@RequestParam("id") Long id, Model model){
+	   public String findById(@RequestParam("id") int id, Model model){
 	     MemberDTO memberDTO = memberService.findById(id);
+	     System.out.println(memberDTO);
 	     model.addAttribute("member", memberDTO);
 	     return "detail";
 	   }
 	   @GetMapping("/delete")
-	   public String delete(@RequestParam("id") Long id){
+	   public String delete(@RequestParam("bno") int id){
+		   System.out.println("delete : "+id);
 	     memberService.delete(id);
-	     return "redirect:/member/";
+	     return "redirect:/member/home";
 	   }
 	   
 	   @GetMapping("/update")
-	   public String updateFrom(HttpSession session, Model model) {
-		    String loginEmail = (String) session.getAttribute("loginEmail");
-		    MemberDTO memberDTO = memberService.findByMemberEmail(loginEmail);
+	   public String updateFrom(@RequestParam("bno") int id, Model model) {
+		   System.out.println(id);
+		   MemberDTO memberDTO = memberService.findById(id);
 		    model.addAttribute("member", memberDTO);
 		    return "update";
 	   }
@@ -97,7 +112,7 @@ public class MemberController {
 	   public String update(@ModelAttribute MemberDTO memberDTO){
 	     boolean result = memberService.update(memberDTO);
 	     if(result){
-	       return "redirect:/member?id=" + memberDTO.getId();
+	       return "redirect:/member?id=" + memberDTO.getBno();
 	     }else{
 	       return "index";
 	     }

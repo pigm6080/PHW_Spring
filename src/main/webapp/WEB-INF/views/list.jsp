@@ -10,31 +10,30 @@
 <body>
 	<table>
 		<tr>
-			<th>id</th>
-			<th>email</th>
-			<th>password</th>
+			<th>bno</th>
 			<th>name</th>
-			<th>age</th>
-			<th>mobile</th>
+			<th>kor</th>
+			<th>eng</th>
+			<th>mat</th>
 			<th>조회</th>
             <th>삭제</th>
         </tr>
         <c:forEach items="${memberList}" var="member">
             <tr>
-                <td>${member.id}</td>
+                <td>${member.bno}</td>
                 <td>
 
-                    <a href="/member?id=${member.id}">${member.memberEmail}</a>
+                    <a href="/member?id=${member.bno}">${member.bno}</a>
                 </td>
-                <td>${member.memberPassword}</td>
-                <td>${member.memberName}</td>
-                <td>${member.memberAge}</td>
-                <td>${member.memberMobile}</td>
+                <td>${member.name}</td>
+                <td>${member.kor}</td>
+                <td>${member.eng}</td>
+                <td>${member.mat}</td>
                 <td>
-                    <a href="/member?id=${member.id}">조회</a>
+                    <a href="/member?id=${member.bno}">조회</a>
                 </td>
                 <td>
-                    <button onclick="deleteMember('${member.id}')">삭제</button>
+                    <button onclick="deleteMember('${member.bno}')">삭제</button>
                 </td>
             </tr>
         </c:forEach>

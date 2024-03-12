@@ -36,10 +36,10 @@ public class MemberService {
 		
 		return memberRepository.findAll();
 	}
-	 public MemberDTO findById(Long id) {
+	 public MemberDTO findById(int id) {
 		    return memberRepository.findById(id);
 	}
-	 public void delete(Long id) {
+	 public void delete(int id) {
 		    memberRepository.delete(id);
 	 }
 	 public MemberDTO findByMemberEmail(String loginEmail) {

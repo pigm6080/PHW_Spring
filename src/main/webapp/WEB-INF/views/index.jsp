@@ -7,11 +7,11 @@
 <title>index</title>
 </head>
 <body>
-	<h2>Hello Spring Framework 회원 프로젝트</h2>
+<div>
+	<h2>학점관리</h2>
 	
-	<a href="/member/save">회원가입</a>
-	<a href="/member/login">로그인</a>
-	<a href="/member/">회원목록 조회</a>
+	<a href="/member/home">학점관리프로그램</a>
 	
+	</div>
 </body>
 </html>

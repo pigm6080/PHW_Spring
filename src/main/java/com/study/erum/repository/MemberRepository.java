@@ -31,10 +31,10 @@ public class MemberRepository {
 		return sql.selectList("Member.findAll");
 	}
 
-	public MemberDTO findById(Long id) {
+	public MemberDTO findById(int id) {
 		return sql.selectOne("Member.findById",id);
 	}
-	 public void delete(Long id) {
+	 public void delete(int id) {
 		    sql.delete("Member.delete", id);
 	}
 	public MemberDTO findByMemberEmail(String loginEmail) {
